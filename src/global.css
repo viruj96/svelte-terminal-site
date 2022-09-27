@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@300&display=swap');
+
+:root {
+  --bg-colour: #1a1a1a;
+  --text-colour: #dbdbdb;
+  --link-colour: #00b7ff;
+  --user-colour: #00ff00;
+  --host-colour: #5555ff;
+  --warn-colour: #ffa500;
+  --error-colour: #ff0000;
+  --command-colour: #ff00ff;
+  --misc-colour: #ffff00;
+  --blue-glow: rgba(0, 30, 255, 0.5);
+  --red-glow: rgba(255, 0, 80, 0.3);
+}
+
+* {
+  background-color: var(--bg-colour);
+  color: var(--text-colour);
+}
+
+body {
+  font-family: 'Noto Sans Mono', monospace;
+  overflow: hidden;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  margin-bottom: 0.2em;
+}
+
+#socials {
+  color: var(--link-colour);
+  display: flex;
+  flex-direction: column;
+}
+
+.command {
+  color: var(--command-colour);
+}
+
+.list {
+  margin: 0.5em 1em 1em;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: [first] 15% [second] 40% [third] auto;
+}
+
+.error-line {
+  color: var(--error-colour);
+}
+
+.warn-line {
+  color: var(--warn-colour);
+}
