@@ -108,7 +108,7 @@ const history = (/** @type {Array} */ previousCommands) => {
 	for (let entry of previousCommands) {
 		if (entry.valid) {
 			result += `
-				<div class="item"><span>${entry.id}</span><span>${entry.command}</span><span>${dateTimeFormatter.format(entry.time).slice(12)}</span></div>
+				<div class="item"><span>${entry.id}</span><span>${entry.command}</span><span>${dateTimeFormatter.format(entry.time).split(' ').slice(-1)[0]}</span></div>
 			`;
 		}
 	}

@@ -8,4 +8,5 @@ export const dateTimeFormatter = new Intl.DateTimeFormat("en", {
 	hour: "numeric",
 	minute: "2-digit",
 	second: "2-digit",
+	weekday: "long",
 });

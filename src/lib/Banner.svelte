@@ -48,8 +48,12 @@
 	</div>
 	<br />
 	<p>Terminal Portfolio</p>
-	<p>Loading system profiles took {Math.round(loadTime)} ms.</p>
-	<p>All up to date - {dateTimeFormatter.format($today)}</p>
+	<p>
+		DOM content loaded in <span class="info-line"
+			>{Math.round(loadTime)} ms</span
+		>.
+	</p>
+	<p>{dateTimeFormatter.format($today)}</p>
 	<br />
 	<p>
 		Type &lt;&lt; <span class="command">help</span> &gt;&gt; to see the list
@@ -68,5 +72,24 @@
 
 	pre {
 		font-family: "Courier New", Courier, monospace;
+		animation: colourchange 20s infinite alternate;
+	}
+
+	@keyframes colourchange {
+		0% {
+			color: var(--text-colour);
+		}
+		25% {
+			color: var(--info-colour);
+		}
+		50% {
+			color: var(--link-colour);
+		}
+		75% {
+			color: var(--misc-colour);
+		}
+		100% {
+			color: var(--user-colour);
+		}
 	}
 </style>
