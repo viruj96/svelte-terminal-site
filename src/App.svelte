@@ -66,7 +66,6 @@
       />
     {/each}
   </div>
-  <div id="bottom" />
 </main>
 
 <style>
