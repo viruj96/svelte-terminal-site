@@ -8,17 +8,14 @@
 	let output = "";
 	let commandEntered = false;
 
-	export const handleInput = (/** @type {{ key: string; keyCode: number; }} */ event) => {
+	export const handleInput = (/** @type {KeyboardEvent} */ event) => {
 		if (event.key === "Enter") {
 			output = commands(input, history);
 			commandEntered = true;
 			return commandEntered;
-		} else if (
-			(event.keyCode >= 65 && event.keyCode <= 90) ||
-			event.keyCode === 32
-		) {
+		} else if (event.code >= "KeyA" && event.code <= "KeyZ") {
 			input += event.key;
-		} else if (event.keyCode === 8) {
+		} else if (event.code === "Backspace") {
 			input = input.slice(0, -1);
 		}
 	};

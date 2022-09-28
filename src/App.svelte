@@ -1,9 +1,9 @@
 <script>
+  import * as animateScroll from "svelte-scrollto";
+  import { writable } from "svelte/store";
   import Banner from "./lib/Banner.svelte";
   import CLI from "./lib/CLI.svelte";
   import { validCommands } from "./utils/commands";
-  import * as animateScroll from "svelte-scrollto";
-  import { writable } from "svelte/store";
 
   animateScroll.setGlobalOptions({
     container: "main",
@@ -20,7 +20,7 @@
     },
   ]);
 
-  const onKeyDown = (/** @type {Event} */ event) => {
+  const onKeyDown = (/** @type {KeyboardEvent} */ event) => {
     let commandEntered = handleInput(event);
     if (commandEntered) {
       const timestamp = new Date();
