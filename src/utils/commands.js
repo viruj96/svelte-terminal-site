@@ -101,14 +101,14 @@ const socials = () => {
 };
 
 const history = (/** @type {Array} */ previousCommands) => {
-	if (previousCommands.length === 0)
+	if (previousCommands.filter(command => command.valid).length === 0)
 		return '<p class="info-line">No valid commands have been executed yet.</p><br />';
 
 	let result = '';
 	for (let entry of previousCommands) {
 		if (entry.valid) {
 			result += `
-				<div class="item"><span>${entry.id}</span><span>${entry.command}</span><span>${dateTimeFormatter.format(entry.time).split(' ').slice(-1)[0]}</span></div>
+				<div class="item"><span>${entry.id}</span><span class="command">${entry.command}</span><span>${dateTimeFormatter.format(entry.time).split(' ').slice(-1)[0]}</span></div>
 			`;
 		}
 	}
