@@ -1,16 +1,26 @@
 <script>
+	import { readable } from "svelte/store";
+
 	const loadTime = window.performance.now();
 
-	const now = new Date();
-	const date =
-		Math.floor(now.getDate() / 10) === 0
-			? `0${now.getDate()}`
-			: `${now.getDate()}`;
-	const month =
-		Math.floor((now.getMonth() + 1) / 10) === 0
-			? `0${now.getMonth() + 1}`
-			: `${now.getMonth() + 1}`;
-	const today = `${date}/${month}/${now.getFullYear()}`;
+	const today = readable(new Date(), function start(set) {
+		const interval = setInterval(() => {
+			set(new Date());
+		}, 1000);
+
+		return function stop() {
+			clearInterval(interval);
+		};
+	});
+
+	const formatter = new Intl.DateTimeFormat("en", {
+		day: "2-digit",
+		month: "2-digit",
+		year: "numeric",
+		hour: "numeric",
+		minute: "2-digit",
+		second: "2-digit",
+	});
 </script>
 
 <div>
@@ -47,7 +57,7 @@
 	<br />
 	<p>Terminal Portfolio</p>
 	<p>Loading system profiles took {Math.round(loadTime)} ms.</p>
-	<p>All up to date - {today}</p>
+	<p>All up to date - {formatter.format($today)}</p>
 	<br />
 	<p>
 		Type &lt;&lt; <span class="command">help</span> &gt;&gt; to see the list
