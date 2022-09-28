@@ -16,12 +16,18 @@ export const commands = (/** @type {string} */ command, /** @type {Array} */ pre
 			return history(previousCommands);
 		case 'clear':
 			return clear();
+		case 'github':
+			return github();
+		case 'linkedin':
+			return linkedin();
+		case 'email':
+			return email();
 		default:
 			return invalid(command);
 	}
 };
 
-export const validCommands = () => ['help', 'whoami', 'resume', 'projects', 'socials', 'history', 'clear'];
+export const validCommands = () => ['help', 'whoami', 'resume', 'projects', 'socials', 'history', 'clear', 'github', 'linkedin', 'email'];
 
 const invalid = (/** @type {string} */ command) => {
 	return `
@@ -70,32 +76,33 @@ const whoami = () => {
 const resume = () => {
 	setTimeout(() => {
 		window.open('https://viruj96.github.io/digital-resume/', '_blank');
-	}, 2000);
+	}, 1000);
 
-	return 'Opening resume...';
+	return '<p class="info-line">Opening resume...</p><br />';
 };
 
 const projects = () => {
 	setTimeout(() => {
 		window.open('https://viruj96.github.io/digital-resume/#projects', '_blank');
-	}, 2000);
+	}, 1000);
 
-	return 'Loading projects...';
+	return '<p class="info-line">Loading projects...</p><br />';
 };
 
 const socials = () => {
 	return `
+		<p class="info-line">Click the link or enter the social to open it up.</p>
 		<div id="socials">
-			<a href="https://github.com/viruj96" target="_blank">GitHub</a>
+			<a href="https://github.com/viruj96/" target="_blank">GitHub</a>
 			<a href="https://www.linkedin.com/in/viruj-bala-soupramanien-1883ab185/" target="_blank">LinkedIn</a>
-			<a href="mailto:virujbala.96@gmail.com" target="_blank">Email</a>
+			<a href="mailto:virujbala.96@gmail.com">Email</a>
 		</div><br />
 	`;
 };
 
 const history = (/** @type {Array} */ previousCommands) => {
 	if (previousCommands.length === 0)
-		return '<p class="warn-line">No valid commands have been executed yet.</p><br />';
+		return '<p class="info-line">No valid commands have been executed yet.</p><br />';
 
 	let result = '';
 	for (let entry of previousCommands) {
@@ -109,5 +116,29 @@ const history = (/** @type {Array} */ previousCommands) => {
 };
 
 const clear = () => {
-	return '<p class="warn-line">Not yet implemented</p><br />';
+	return '<p class="info-line">Not yet implemented</p><br />';
 };
+
+const github = () => {
+	setTimeout(() => {
+		window.open('https://github.com/viruj96/', '_blank');
+	}, 1000);
+
+	return '<p class="info-line">Opening GitHub...</p><br />';
+}
+
+const linkedin = () => {
+	setTimeout(() => {
+		window.open('https://www.linkedin.com/in/viruj-bala-soupramanien-1883ab185/', '_blank');
+	}, 1000);
+
+	return '<p class="info-line">Opening LinkedIn...</p><br />';
+}
+
+const email = () => {
+	setTimeout(() => {
+		window.open('mailto:virujbala.96@gmail.com', '_self');
+	}, 1000);
+
+	return '<p class="info-line">Opening email...</p><br />';
+}
