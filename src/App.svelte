@@ -1,12 +1,19 @@
 <script>
-  import * as animateScroll from "svelte-scrollto";
+  import { afterUpdate, beforeUpdate } from "svelte";
   import { writable } from "svelte/store";
   import Banner from "./lib/Banner.svelte";
   import CLI from "./lib/CLI.svelte";
   import { validCommands } from "./utils/commands";
 
-  animateScroll.setGlobalOptions({
-    container: "main",
+  let main;
+  let autoscroll;
+
+  beforeUpdate(() => {
+    autoscroll = main && main.offsetHeight + main.scrollTop < main.scrollHeight;
+  });
+
+  afterUpdate(() => {
+    if (autoscroll) main.scrollTo(0, main.scrollHeight);
   });
 
   let history = [];
@@ -40,13 +47,12 @@
         },
       ]);
     }
-    animateScroll.scrollTo({ element: "#bottom" });
   };
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
 
-<main>
+<main bind:this={main}>
   <div id="crt">
     {#if !cleared}
       <Banner />
@@ -69,6 +75,7 @@
     height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   main::-webkit-scrollbar {
