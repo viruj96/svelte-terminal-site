@@ -98,11 +98,8 @@
 		0% {
 			opacity: 0;
 		}
-	}
-
-	@-webkit-keyframes blink {
-		0% {
-			opacity: 0;
+		100% {
+			opacity: 1;
 		}
 	}
 </style>
