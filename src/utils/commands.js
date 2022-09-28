@@ -69,7 +69,7 @@ const whoami = () => {
 		<p>There I somehow got more into IT. I was tasked with several small projects to automate simple things.</p>
 		<p>With the limited programming knowledge I had, I managed to do some of them.</p>
 		<p>That's when I decided I should go into IT. So I started my masters in applied software technologies.</p>
-		<p>And here we now! Me creating a web terminal portfolio 😋</p><br />
+		<p>And here we now! Me creating a terminal-themed web portfolio in Svelte 😋.</p><br />
 	`
 };
 
