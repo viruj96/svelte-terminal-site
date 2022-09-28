@@ -58,11 +58,12 @@ const whoami = () => {
 		<p>Yes! I tackle both real world and virtual world problems. Or at least I'd like to.</p>
 		<p>I am currently working as a full stack developer.</p>
 		<p>Being a man of science and numbers, naturally I went and studied mechanical engineering.</p>
-		<p>That's when I got my first taste of pragramming.</p>
+		<p>That's when I got my first taste of pragramming through MATLAB.</p>
 		<p>After completing my honours, I worked for a little under a year in a geotechnical engineering firm.</p>
-		<p>There I somehow got more into IT. I was tasked with several small projects to automate simple things. With the limited programming knowledge I had, I managed to do some things.</p>
+		<p>There I somehow got more into IT. I was tasked with several small projects to automate simple things.</p>
+		<p>With the limited programming knowledge I had, I managed to do some of them.</p>
 		<p>That's when I decided I should go into IT. So I started my masters in applied software technologies.</p>
-		<p>And here we now.</p><br />
+		<p>And here we now! Me creating a web terminal portfolio 😋</p><br />
 	`
 };
 
