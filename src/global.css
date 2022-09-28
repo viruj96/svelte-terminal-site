@@ -6,7 +6,7 @@
   --link-colour: #00b7ff;
   --user-colour: #00ff00;
   --host-colour: #5555ff;
-  --warn-colour: #ffa500;
+  --info-colour: #ffa500;
   --error-colour: #ff0000;
   --command-colour: #ff00ff;
   --misc-colour: #ffff00;
@@ -30,13 +30,15 @@ p {
 
 a {
   color: inherit;
-  margin-bottom: 0.2em;
+  text-decoration: none;
+  margin-top: 0.5em;
 }
 
 #socials {
   color: var(--link-colour);
   display: flex;
   flex-direction: column;
+  width: max-content;
 }
 
 .command {
@@ -56,6 +58,6 @@ a {
   color: var(--error-colour);
 }
 
-.warn-line {
-  color: var(--warn-colour);
+.info-line {
+  color: var(--info-colour);
 }
