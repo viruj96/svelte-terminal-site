@@ -1,5 +1,6 @@
 <script>
 	import { readable } from "svelte/store";
+	import { dateTimeFormatter } from "../utils/constants";
 
 	const loadTime = window.performance.now();
 
@@ -11,15 +12,6 @@
 		return function stop() {
 			clearInterval(interval);
 		};
-	});
-
-	const formatter = new Intl.DateTimeFormat("en", {
-		day: "2-digit",
-		month: "2-digit",
-		year: "numeric",
-		hour: "numeric",
-		minute: "2-digit",
-		second: "2-digit",
 	});
 </script>
 
@@ -57,7 +49,7 @@
 	<br />
 	<p>Terminal Portfolio</p>
 	<p>Loading system profiles took {Math.round(loadTime)} ms.</p>
-	<p>All up to date - {formatter.format($today)}</p>
+	<p>All up to date - {dateTimeFormatter.format($today)}</p>
 	<br />
 	<p>
 		Type &lt;&lt; <span class="command">help</span> &gt;&gt; to see the list
