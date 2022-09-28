@@ -43,8 +43,7 @@ const help = () => {
 			<div class="item"><span class="command">history</span>		<span class="description">See all previously executed commands</span></div>
 			<div class="item"><span class="command">clear</span>		<span class="description">Clear terminal</span></div>
 			<div class="item"><span class="command">help</span>			<span class="description">View all available commands</span></div>
-		</div>
-		<p class="warn-line">DISCLAIMER!: The input is a bit buggy. After entering the first command hit any letter key to see the terminal again.</p><br />
+		</div><br />
 	`;
 };
 
@@ -102,9 +101,9 @@ const history = (/** @type {Array} */ previousCommands) => {
 			`;
 		}
 	}
-	return `<div class="list">${result}</div>`;
+	return `<div class="list">${result}</div><br />`;
 };
 
 const clear = () => {
-	return 'Not yet implemented'
+	return '<p class="warn-line">Not yet implemented</p><br />';
 };
