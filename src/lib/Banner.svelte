@@ -55,6 +55,10 @@
 	</p>
 	<p>{dateTimeFormatter.format($today)}</p>
 	<br />
+	<p class="info-line">
+		For the best experience, open the terminal in a chromium-based browser
+	</p>
+	<br />
 	<p>
 		Type &lt;&lt; <span class="command">help</span> &gt;&gt; to see the list
 		of available commands.
