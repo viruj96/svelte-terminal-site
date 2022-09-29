@@ -1,10 +1,12 @@
 <script>
-	export let output;
+	export let output = "";
 </script>
 
-<div>
-	{@html output}
-</div>
+{#if output !== ""}
+	<div>
+		{@html output}
+	</div>
+{/if}
 
 <style>
 	div {

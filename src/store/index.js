@@ -10,4 +10,4 @@ export const today = readable(new Date(), function start(set) {
 	};
 });
 
-export const clis = writable([]);
+export const command = writable([]);

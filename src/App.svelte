@@ -1,39 +1,34 @@
 <script>
-  import { afterUpdate, beforeUpdate, onMount } from "svelte";
+  import { afterUpdate, onMount } from "svelte";
   import Banner from "./lib/Banner.svelte";
   import CLI from "./lib/CLI.svelte";
-  import { clis } from "./store";
+  import Output from "./lib/Output.svelte";
+  import { command } from "./store";
   import { validCommands } from "./utils/commands";
 
   let main;
-  let autoscroll;
-
-  beforeUpdate(() => {
-    autoscroll = main && main.offsetHeight + main.scrollTop < main.scrollHeight;
-  });
 
   afterUpdate(() => {
-    if (autoscroll) main.scrollTo(0, main.scrollHeight);
+    main.scrollTo(0, main.scrollHeight);
   });
 
   let history = [];
   let handleInput;
-  let cleared = false;
 
   onMount(() => {
-    $clis = [
+    $command = [
       {
-        component: CLI,
         input: "",
+        output: "",
       },
     ];
   });
 
   const onKeyDown = (/** @type {KeyboardEvent} */ event) => {
-    let commandEntered = handleInput(event);
-    if (commandEntered) {
+    let inputCommand = handleInput(event);
+    if (inputCommand.entered) {
       const timestamp = new Date();
-      let input = $clis.slice(-1)[0].input;
+      let input = inputCommand.input;
       let id = history.length + 1;
       history.push({
         id,
@@ -41,13 +36,19 @@
         time: timestamp,
         valid: validCommands().includes(input),
       });
-      clis.update((prev) => [
-        ...prev,
-        {
-          component: CLI,
-          input: "",
-        },
-      ]);
+      command.update((prev) => {
+        let last = prev.slice(-1)[0];
+        let upToLast = prev.slice(0, -1);
+        last.output = inputCommand.output;
+        return [
+          ...upToLast,
+          last,
+          {
+            input: "",
+            output: "",
+          },
+        ];
+      });
     }
   };
 </script>
@@ -55,19 +56,16 @@
 <svelte:window on:keydown={onKeyDown} />
 
 <main bind:this={main}>
-  <div id="crt">
-    {#if !cleared}
-      <Banner />
-    {/if}
-    {#each $clis as cli}
-      <svelte:component
-        this={cli.component}
-        bind:handleInput
-        bind:input={cli.input}
-        {history}
-      />
-    {/each}
-  </div>
+  <Banner />
+  {#each $command as cmd}
+    <svelte:component
+      this={CLI}
+      bind:handleInput
+      bind:input={cmd.input}
+      bind:history
+    />
+    <svelte:component this={Output} bind:output={cmd.output} />
+  {/each}
 </main>
 
 <style>
@@ -78,6 +76,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    animation: textShadow 1.6s infinite;
   }
 
   main::-webkit-scrollbar {
@@ -94,7 +93,7 @@
     border-radius: 3em;
   }
 
-  #crt::after {
+  main::after {
     content: " ";
     display: block;
     position: absolute;
@@ -102,14 +101,14 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(18, 16, 16, 0.1);
+    background: rgb(18, 16, 16, 0.1);
     opacity: 0;
     z-index: 2;
     pointer-events: none;
     animation: flicker 0.15s infinite;
   }
 
-  #crt::before {
+  main::before {
     content: " ";
     display: block;
     position: absolute;
@@ -130,10 +129,6 @@
     z-index: 2;
     background-size: 100% 0.1%, 0.2% 100%;
     pointer-events: none;
-  }
-
-  #crt {
-    animation: textShadow 1.6s infinite;
   }
 
   @keyframes flicker {

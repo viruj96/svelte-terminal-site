@@ -50,9 +50,14 @@ a {
   margin: 0.5em 1em 1em;
 }
 
-.item {
+.item-2 {
   display: grid;
-  grid-template-columns: [first] 15% [second] 40% [third] auto;
+  grid-template-columns: [first] 15% [second] auto;
+}
+
+.item-3 {
+  display: grid;
+  grid-template-columns: [first] 15% [second] 15% [third] auto;
 }
 
 .error-line {

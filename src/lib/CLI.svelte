@@ -1,18 +1,16 @@
 <script>
 	import { commands } from "../utils/commands";
 	import { hostname, username } from "../utils/constants";
-	import Output from "./Output.svelte";
 
 	export let history;
 	export let input = "";
-	let output = "";
-	let commandEntered = false;
+	let entered = false;
 
 	export const handleInput = (/** @type {KeyboardEvent} */ event) => {
 		if (event.key === "Enter") {
-			output = commands(input, history);
-			commandEntered = true;
-			return commandEntered;
+			let output = commands(input, history);
+			entered = true;
+			return { entered, input, output };
 		} else if (event.code >= "KeyA" && event.code <= "KeyZ") {
 			input += event.key;
 		} else if (event.code === "Backspace") {
@@ -27,12 +25,9 @@
 		<span id="hostname">{hostname}</span>
 	</div>
 	<div id="cursor">
-		<span id={commandEntered ? "faux-command" : "faux-input"}>{input}</span>
+		<span id={entered ? "faux-command" : "faux-input"}>{input}</span>
 	</div>
 </div>
-{#if output !== ""}
-	<Output bind:output />
-{/if}
 
 <style>
 	#input {

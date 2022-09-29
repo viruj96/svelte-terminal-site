@@ -42,14 +42,14 @@ const help = () => {
 		<p>Shell version ${timestamp.getDate()}.${timestamp.getMonth() + 1}.${timestamp.getFullYear()}.</p>
 		<p>List of available commands:</p>
 		<div class="list">
-			<div class="item"><span class="command">whoami</span>		<span class="description">Get to know me</span></div>
-			<div class="item"><span class="command">resume</span>		<span class="description">View my digital resume</span></div>
-			<div class="item"><span class="command">projects</span>		<span class="description">See some of the things I've done</span></div>
-			<div class="item"><span class="command">socials</span>		<span class="description">How you can reach me</span></div>
-			<div class="item"><span class="command">history</span>		<span class="description">See all previously executed commands</span></div>
-			<div class="item"><span class="command">clear</span>		<span class="description">Clear terminal</span></div>
-			<div class="item"><span class="command">help</span>			<span class="description">View all available commands</span></div>
-		</div><br />
+			<div class="item-2"><span class="command">whoami</span>			<span class="description">Get to know me</span></div>
+			<div class="item-2"><span class="command">resume</span>			<span class="description">View my digital resume</span></div>
+			<div class="item-2"><span class="command">projects</span>		<span class="description">See some of the things I've done</span></div>
+			<div class="item-2"><span class="command">socials</span>		<span class="description">How you can reach me</span></div>
+			<div class="item-2"><span class="command">history</span>		<span class="description">See all previously executed commands</span></div>
+			<div class="item-2"><span class="command">help</span>			<span class="description">View all available commands</span></div>
+			<div class="item-2"><span class="command">clear</span>			<span class="description">Clear terminal (<span class="info-line">Couldn't quite get it to work nicely 😔 so custom clear 🤪.</span>)</span></div>
+		</div>
 	`;
 };
 
@@ -67,9 +67,9 @@ const whoami = () => {
 		<p>That's when I got my first taste of pragramming through MATLAB.</p>
 		<p>After completing my honours, I worked for a little under a year in a geotechnical engineering firm.</p>
 		<p>There I somehow got more into IT. I was tasked with several small projects to automate simple things.</p>
-		<p>With the limited programming knowledge I had, I managed to do some of them.</p>
-		<p>That's when I decided I should go into IT. So I started my masters in applied software technologies.</p>
-		<p>And here we now! Me creating a terminal-themed web portfolio in Svelte 😋.</p><br />
+		<p>With the limited programming knowledge I had, I managed to do  them.</p>
+		<p>That's when I decided I should really get into IT. So I started my masters in applied software technologies.</p>
+		<p>And here we now... Me creating a terminal-themed web portfolio in Svelte 😋!</p><br />
 	`
 };
 
@@ -91,7 +91,7 @@ const projects = () => {
 
 const socials = () => {
 	return `
-		<p class="info-line">Click the link or enter the social to open it up.</p>
+		<p>Click the link or enter the social to open it.</p>
 		<div id="socials">
 			<a href="https://github.com/viruj96/" target="_blank">GitHub</a>
 			<a href="https://www.linkedin.com/in/viruj-bala-soupramanien-1883ab185/" target="_blank">LinkedIn</a>
@@ -108,7 +108,7 @@ const history = (/** @type {Array} */ previousCommands) => {
 	for (let entry of previousCommands) {
 		if (entry.valid) {
 			result += `
-				<div class="item"><span>${entry.id}</span><span class="command">${entry.command}</span><span>${dateTimeFormatter.format(entry.time).split(' ').slice(-1)[0]}</span></div>
+				<div class="item-3"><span>${entry.id}</span><span class="command">${entry.command}</span><span>${dateTimeFormatter.format(entry.time).split(' ').slice(-1)[0]}</span></div>
 			`;
 		}
 	}
@@ -116,7 +116,11 @@ const history = (/** @type {Array} */ previousCommands) => {
 };
 
 const clear = () => {
-	return '<p class="info-line">Not yet implemented</p><br />';
+	setTimeout(() => {
+		location.reload();
+	}, 1000);
+
+	return '<p class="info-line">Clearing terminal 😋...</p><br />';
 };
 
 const github = () => {
