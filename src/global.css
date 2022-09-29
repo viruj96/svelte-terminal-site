@@ -15,7 +15,6 @@
 }
 
 * {
-  background-color: var(--bg-colour);
   color: var(--text-colour);
 }
 
@@ -73,6 +72,11 @@ a {
   border-image-source: url(./assets/bezel.png);
   border-image-slice: 30 fill;
   border-image-outset: 0;
+  background-image: url(./assets/bg.png);
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: var(--bg-colour);
 }
 
 @media (max-height: 600px) {
@@ -81,6 +85,11 @@ a {
     border-image-source: url(./assets/bezel.png);
     border-image-slice: 30 fill;
     border-image-outset: 0;
+    background-image: url(./assets/bg.png);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bg-colour);
   }
 }
 
@@ -90,5 +99,24 @@ a {
     border-image-source: url(./assets/bezel.png);
     border-image-slice: 30 fill;
     border-image-outset: 0;
+    background-image: url(./assets/bg.png);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bg-colour);
+  }
+}
+
+@media (max-height: 360px) {
+  #app {
+    border: 3vh solid transparent;
+    border-image-source: url(./assets/bezel.png);
+    border-image-slice: 30 fill;
+    border-image-outset: 0;
+    background-image: url(./assets/bg.png);
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bg-colour);
   }
 }
