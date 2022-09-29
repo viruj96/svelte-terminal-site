@@ -4,52 +4,52 @@
 	import { dateTimeFormatter } from "../utils/constants";
 
 	let banner;
-	let fontSize = 0.69;
+	let fontSize;
 	const viewports = [
 		{
 			width: 1300,
 			match: false,
-			fontSize: 0.68,
+			fontSize: 0.67,
 		},
 		{
 			width: 1100,
 			match: false,
-			fontSize: 0.67,
+			fontSize: 0.66,
 		},
 		{
 			width: 960,
 			match: false,
-			fontSize: 0.66,
+			fontSize: 0.65,
 		},
 		{
 			width: 850,
 			match: false,
-			fontSize: 0.65,
+			fontSize: 0.64,
 		},
 		{
 			width: 765,
 			match: false,
-			fontSize: 0.64,
+			fontSize: 0.63,
 		},
 		{
 			width: 690,
 			match: false,
-			fontSize: 0.63,
+			fontSize: 0.62,
 		},
 		{
 			width: 630,
 			match: false,
-			fontSize: 0.75,
+			fontSize: 0.73,
 		},
 		{
 			width: 425,
 			match: false,
-			fontSize: 1,
+			fontSize: 0.9,
 		},
 		{
 			width: 410,
 			match: false,
-			fontSize: 0.9,
+			fontSize: 0.8,
 		},
 	];
 
@@ -59,7 +59,7 @@
 		});
 		let viewport = viewports.filter((vp) => vp.match);
 		if (viewport.length === 0) {
-			fontSize = 0.69;
+			fontSize = 0.68;
 		} else {
 			fontSize = viewport.slice(-1)[0].fontSize;
 		}

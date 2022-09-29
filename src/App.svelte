@@ -72,7 +72,7 @@
   main {
     margin: 1em;
     padding: 0 0.5em;
-    height: 85vh;
+    height: 86vh;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
