@@ -70,8 +70,9 @@
 
 <style>
   main {
-    margin: 2em;
-    height: 90vh;
+    margin: 1em;
+    padding: 0 0.5em;
+    height: 85vh;
     overflow-y: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
