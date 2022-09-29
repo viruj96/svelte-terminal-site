@@ -1,8 +1,8 @@
 <script>
-  import { afterUpdate, beforeUpdate } from "svelte";
-  import { writable } from "svelte/store";
+  import { afterUpdate, beforeUpdate, onMount } from "svelte";
   import Banner from "./lib/Banner.svelte";
   import CLI from "./lib/CLI.svelte";
+  import { clis } from "./store";
   import { validCommands } from "./utils/commands";
 
   let main;
@@ -20,12 +20,14 @@
   let handleInput;
   let cleared = false;
 
-  const clis = writable([
-    {
-      component: CLI,
-      input: "",
-    },
-  ]);
+  onMount(() => {
+    $clis = [
+      {
+        component: CLI,
+        input: "",
+      },
+    ];
+  });
 
   const onKeyDown = (/** @type {KeyboardEvent} */ event) => {
     let commandEntered = handleInput(event);
@@ -79,7 +81,7 @@
   }
 
   main::-webkit-scrollbar {
-    width: 0.5em;
+    width: 0.1em;
   }
 
   main::-webkit-scrollbar-track {

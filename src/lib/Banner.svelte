@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-	import { readable } from "svelte/store";
+	import { today } from "../store";
 	import { dateTimeFormatter } from "../utils/constants";
 
 	let banner;
@@ -71,16 +71,6 @@
 	});
 
 	const loadTime = window.performance.now();
-
-	const today = readable(new Date(), function start(set) {
-		const interval = setInterval(() => {
-			set(new Date());
-		}, 1000);
-
-		return function stop() {
-			clearInterval(interval);
-		};
-	});
 </script>
 
 <svelte:window on:resize={setFontSize} />
@@ -128,7 +118,7 @@
 	<p>{dateTimeFormatter.format($today)}</p>
 	<br />
 	<p class="info-line">
-		For the best experience, open the terminal in a chromium-based browser
+		For the best experience, open the terminal in a chromium-based browser.
 	</p>
 	<br />
 	<p>
