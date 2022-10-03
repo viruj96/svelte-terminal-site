@@ -1,6 +1,6 @@
 <script>
 	import { commands } from "../utils/commands";
-	import { hostname, username } from "../utils/constants";
+	import { hostname, playSound, username } from "../utils/constants";
 
 	export let history;
 	export let input = "";
@@ -10,11 +10,14 @@
 		if (event.key === "Enter") {
 			let output = commands(input, history);
 			entered = true;
+			playSound(event.key);
 			return { entered, input, output };
 		} else if (event.code >= "KeyA" && event.code <= "KeyZ") {
 			input += event.key;
+			playSound();
 		} else if (event.code === "Backspace") {
 			input = input.slice(0, -1);
+			playSound(event.key);
 		}
 	};
 </script>
